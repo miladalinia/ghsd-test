@@ -1,0 +1,13 @@
+{
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "options": {
+        "outputPath": "dist/libs/types",
+        "tsConfig": "libs/types/tsconfig.lib.json",
+        "main": "libs/types/src/index.ts"
+
+      }
+    }
+  }
+}

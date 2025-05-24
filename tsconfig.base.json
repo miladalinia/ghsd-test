@@ -1,0 +1,31 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "jsx": "react",
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true,
+    "noImplicitAny": false,
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "esnext",
+    "lib": ["es2017", "dom"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@ghased-portal/client": ["libs/client/src/index.ts"],
+      "@ghased-portal/hooks": ["libs/hooks/src/index.ts"],
+      "@ghased-portal/layouts": ["libs/layouts/src/index.ts"],
+      "@ghased-portal/translation": ["libs/translation/src/index.ts"],
+      "@ghased-portal/ui-kit": ["libs/ui-kit/src/index.ts"], 
+      "@ghased-portal/utils": ["libs/utils/src/index.ts"],
+      "@ghased-portal/types": ["libs/types/src/index.ts"]
+    }
+  }
+}

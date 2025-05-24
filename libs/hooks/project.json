@@ -1,0 +1,14 @@
+{
+    "targets": {
+      "build": {
+        "executor": "@nx/js:tsc",
+        "options": {
+          "outputPath": "dist/libs/hooks",
+          "tsConfig": "libs/hooks/tsconfig.lib.json",
+          "main": "libs/hooks/src/index.ts"
+
+        }
+      }
+    }
+  }
+  

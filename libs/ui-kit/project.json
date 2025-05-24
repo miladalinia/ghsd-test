@@ -1,0 +1,13 @@
+{
+    "targets": {
+      "build": {
+        "executor": "@nx/js:tsc",
+        "options": {
+          "outputPath": "dist/libs/ui-kit",
+          "tsConfig": "libs/ui-kit/tsconfig.lib.json",
+          "main": "libs/ui-kit/src/index.ts"
+        }
+      }
+    }
+  }
+  

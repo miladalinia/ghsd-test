@@ -1,0 +1,34 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compileOnSave": false,
+  "files": [],
+  "references": [
+    {
+      "path": "./apps/portal-e2e"
+    },
+    {
+      "path": "./apps/portal"
+    },
+    {
+      "path": "./libs/ui-kit"
+    },
+    {
+      "path": "./libs/utils"
+    },
+    {
+      "path": "./libs/hooks"
+    },
+    {
+      "path": "./libs/client"
+    },
+    {
+      "path": "./libs/translation"
+    },
+    {
+      "path": "./libs/layouts"
+    },
+    {
+      "path": "./libs/types"
+    }
+  ]
+}

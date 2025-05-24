@@ -1,0 +1,16 @@
+{
+    "extends": "../../tsconfig.base.json",
+    "compilerOptions": {
+      "module": "esnext",               // Required for bundler
+      "jsx": "react",               // Required for TSX files
+      "declaration": true,              // For buildable libs
+      "declarationMap": true,
+      "sourceMap": true,
+      "emitDecoratorMetadata": true,    // If needed
+      "experimentalDecorators": true,   // If needed
+      "skipLibCheck": true
+    },
+    "include": ["src/**/*"],
+    "exclude": ["node_modules", "dist", "test", "**/*spec.ts"]
+  }
+  

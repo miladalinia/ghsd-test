@@ -1,0 +1,14 @@
+{
+    "targets": {
+      "build": {
+        "executor": "@nx/js:tsc",
+        "options": {
+          "outputPath": "dist/libs/layouts",
+          "tsConfig": "libs/layouts/tsconfig.lib.json",
+          "main": "libs/layouts/src/index.ts"
+
+        }
+      }
+    }
+  }
+  

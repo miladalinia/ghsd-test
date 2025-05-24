@@ -1,0 +1,14 @@
+{
+    "targets": {
+      "build": {
+        "executor": "@nx/js:tsc",
+        "options": {
+          "outputPath": "dist/libs/client",
+          "tsConfig": "libs/client/tsconfig.lib.json",
+          "main": "libs/client/src/index.ts"
+
+        }
+      }
+    }
+  }
+  
