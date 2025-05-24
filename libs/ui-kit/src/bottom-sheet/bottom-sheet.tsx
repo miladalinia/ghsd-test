@@ -90,11 +90,14 @@ export const BottomSheet: React.FC<BottomSheetProps> = ({
       if (open) {
         setClosing(false);
         if (contentRef.current) {
-          const footerHeight = footerRef.current?.getBoundingClientRect().height ?? 0;
+          const footerHeight =
+            footerRef.current?.getBoundingClientRect().height ?? 0;
           const contentHeight = footer
             ? contentRef.current.scrollHeight + 40 + footerHeight
             : contentRef.current.scrollHeight + 40;
-          const newHeight = initialHeight ? Math.min(initialHeight, maxHeight) : Math.min(contentHeight, maxHeight);
+          const newHeight = initialHeight
+            ? Math.min(initialHeight, maxHeight)
+            : Math.min(contentHeight, maxHeight);
           setHeight(newHeight);
         }
       }
@@ -118,7 +121,10 @@ export const BottomSheet: React.FC<BottomSheetProps> = ({
 
     if (!isResizable && diff < 0) return;
 
-    const newHeight = Math.max(MIN_HEIGHT, Math.min(startHeight.current - diff, maxHeight));
+    const newHeight = Math.max(
+      MIN_HEIGHT,
+      Math.min(startHeight.current - diff, maxHeight)
+    );
     setHeight(newHeight);
   };
 
@@ -158,17 +164,25 @@ export const BottomSheet: React.FC<BottomSheetProps> = ({
       <>
         <S.Backdrop visible={!closing} onClick={startClose} />
         <S.Container height={height} maxHeight={maxHeight} closing={closing}>
-          <S.DragContainer onTouchStart={onTouchStart} onTouchMove={onTouchMove} onTouchEnd={onTouchEnd}>
+          <S.DragContainer
+            onTouchStart={onTouchStart}
+            onTouchMove={onTouchMove}
+            onTouchEnd={onTouchEnd}
+          >
             <S.DragHandle />
           </S.DragContainer>
-          <S.Body ref={contentRef}>
+          <S.Body<any> ref={contentRef}>
             {error ? (
-              <BottomSheetErrorMessage message={error} loading={loading} reTryHandler={reTryHandler} />
+              <BottomSheetErrorMessage
+                message={error}
+                loading={loading}
+                reTryHandler={reTryHandler}
+              />
             ) : (
               children
             )}
           </S.Body>
-          {footer && <S.Footer ref={footerRef}>{footer}</S.Footer>}
+          {footer && <S.Footer<any> ref={footerRef}>{footer}</S.Footer>}
         </S.Container>
       </>
     );

@@ -1,7 +1,7 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "jsx": "react",
+    "jsx": "react-jsx",
     "rootDir": ".",
     "sourceMap": true,
     "declaration": false,
@@ -15,9 +15,10 @@
     "target": "es2015",
     "module": "esnext",
     "lib": ["es2017", "dom"],
-    "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
+    "esModuleInterop": true,
+    "skipLibCheck": true, 
     "paths": {
       "@ghased-portal/client": ["libs/client/src/index.ts"],
       "@ghased-portal/hooks": ["libs/hooks/src/index.ts"],

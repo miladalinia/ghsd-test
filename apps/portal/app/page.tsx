@@ -1,6 +1,6 @@
 'use client';
 
-import { Box, Button, Table } from "@ghased-portal/ui-kit";
+import { Box, Button, Table, } from "@ghased-portal/ui-kit";
 
 
 
