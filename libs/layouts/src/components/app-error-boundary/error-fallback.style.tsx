@@ -10,7 +10,6 @@ export const ErrorFallbackWrapper = styled.div`
   //text-align: center;
   align-items: center;
   background-color: ${({ theme }) => theme.errorBackground};
-  //box-shadow: ${({ theme }) => theme.boxShadow};
 `;
 
 export const ErrorTitle = styled.span`

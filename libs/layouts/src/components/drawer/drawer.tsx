@@ -61,7 +61,7 @@ const Drawer = (props: DrawerProps) => {
   const { menu, setMenu } = useMenu();
   const { config } = useConfig();
   const prevLocaleRef = useRef(config.locale);
-  const menuItemKeyRef = useRef();
+  const menuItemKeyRef = useRef(null);
 
   const [t] = useTr();
   const [searchQuery, setSearchQuery] = useState('');
@@ -287,7 +287,6 @@ const Drawer = (props: DrawerProps) => {
       {shouldDisplaySider && (
         <S.Sider
           trigger={null}
-          theme={'light'}
           collapsible
           collapsed={siderCollapsed}
           breakpoint={'md'}
