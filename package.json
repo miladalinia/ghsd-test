@@ -12,7 +12,7 @@
     "widget-g": "nx g widget-g",
     "storybook": "nx storybook storybook-host",
     "build-storybook": "nx storybook build storybook-host",
-    "prepare": "cd .. && husky install frontend/.husky"
+    "prepare": "cd .. && husky install .husky"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.8.2",
