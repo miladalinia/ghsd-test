@@ -1,7 +1,8 @@
 import { message, Modal, notification } from 'antd';
-import { useConfig } from '../use-config/use-config';
 
 import { Direction } from '@ghased-portal/types';
+import { useSelector } from 'react-redux';
+import { RootState } from '@ghased-portal/redux-store';
 
 type CustomModalFunctions = Omit<ReturnType<typeof Modal>, 'warn'> & {
   confirm: typeof Modal.confirm;
@@ -19,7 +20,7 @@ interface IUseApp {
 
 const useApp = (): IUseApp => {
   const [modalInstance, contextHolder] = Modal.useModal();
-  const { config } = useConfig();
+  const config = useSelector((state: RootState) => state.appConfig.config);
 
   notification.config({
     placement: config.direction === Direction.RTL ? 'topRight' : 'topLeft',

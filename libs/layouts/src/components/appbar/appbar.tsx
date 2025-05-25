@@ -11,9 +11,9 @@ import AppBarMenu from '../appbar-menu/appbar-menu';
 import { useTheme } from 'styled-components';
 import { Api } from '../../services';
 import { useLocalStorage } from '@ghased-portal/hooks';
-import { useRouter } from 'next/router';
 import SearchSvg from '../../assets/media/menu-icons/search';
 import { ReactComponent as ArrowBackIcon } from '../../assets/media/arrow-back.svg';
+import { usePathname } from 'next/navigation';
 
 export type AppBarProps = {
   isMobileOrTablet: boolean;
@@ -32,13 +32,13 @@ const Appbar = (props: AppBarProps) => {
 
   const [t] = useTr();
   const theme = useTheme();
-  const router = useRouter();
+  const pathname = usePathname();
 
   useEffect(() => {
     if (isMobileOrTablet) {
-      setShowLogo(mobileMenuRoutes.includes(router.pathname) ?? false);
+      setShowLogo(mobileMenuRoutes.includes(pathname) ?? false);
     }
-  }, [router.pathname, isMobileOrTablet]);
+  }, [pathname, isMobileOrTablet]);
 
   useEffect(() => {
     if (purpose) {
@@ -68,10 +68,14 @@ const Appbar = (props: AppBarProps) => {
         {/* </Button> */}
         {showLogo ? (
           <span className={'appbar-title-logo-date'}>
-            <BaamsunLogo onClick={() => router.push('/home')} />
+            <BaamsunLogo onClick={() => window.history.pushState('/home', '')} />
           </span>
         ) : (
-          <Button className='appbar__return-button' type='link' onClick={() => router.push('/mobile-services-menu')}>
+          <Button
+            className='appbar__return-button'
+            type='link'
+            onClick={() => window.history.pushState('/mobile-services-menu', '')}
+          >
             {/* <i style={{ fontSize: '2rem' }} className='ri-arrow-right-line'></i> */}
             <ArrowBackIcon className={`${theme.direction === Direction.LTR ? 'rotate' : ''}`} />
             {t('button.return')}
@@ -101,9 +105,9 @@ const Appbar = (props: AppBarProps) => {
 
         <span style={{ flexGrow: 1 }} />
 
-        <span className={'appbar-title-bank-logo'}>
+        {/* <span className={'appbar-title-bank-logo'}>
           <Image src={config.themeId === 'dark' ? bankLogo : bankLogoBlack} alt='Bank Melli' />
-        </span>
+        </span> */}
 
         <ThemeSwitch />
 
@@ -115,9 +119,9 @@ const Appbar = (props: AppBarProps) => {
           <Button icon={<i className='ri-notification-2-fill' />} type='text' shape='circle' />
         </span> */}
 
-        <span className={'appbar-item'}>
-          <Button icon={<i className='ri-logout-box-r-line' />} type='text' shape='circle' onClick={props.onLogout} />
-        </span>
+        {/* <span className={'appbar-item'}>
+          <Button type='text' shape='circle' onClick={props.onLogout} />
+        </span> */}
       </>
     );
   };

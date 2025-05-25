@@ -7,12 +7,7 @@ interface UseMarkDownProps {
   href?: string;
 }
 
-interface StyledLinkProps {
-  fontWeight: string;
-  fontStyle: string;
-}
-
-const StyledLink = styled.a<StyledLinkProps>`
+const StyledLink = styled.a<{ fontWeight: string; fontStyle: string }>`
   display: contents;
   color: ${(props) => props.theme.primary} !important;
   text-decoration: none;
@@ -41,18 +36,17 @@ const parseLinks = (text: string): (string | JSX.Element)[] => {
       elements.push(text.slice(lastIndex, match.index));
     }
 
-    const isExternal =
-      href.startsWith('http://') || href.startsWith('https://');
+    const isExternal = href.startsWith('http://') || href.startsWith('https://');
 
     // Push the link
     elements.push(
-      <StyledLink<any>
-        target="_blank"
+      <StyledLink
+        target='_blank'
         key={linkText + match.index}
         rel={isExternal ? 'noopener noreferrer' : undefined}
         href={href}
-        fontWeight="500"
-        fontStyle="normal"
+        fontWeight='500'
+        fontStyle='normal'
         onClick={(e) => {
           e.preventDefault();
           window.open(href, '_blank', 'noopener,noreferrer');
@@ -73,9 +67,7 @@ const parseLinks = (text: string): (string | JSX.Element)[] => {
 };
 
 // Helper function to handle parsing for bold text ({text})
-const parseBold = (
-  elements: (string | JSX.Element)[]
-): (string | JSX.Element)[] => {
+const parseBold = (elements: (string | JSX.Element)[]): (string | JSX.Element)[] => {
   const boldRegex = /\{(.*?)\}/g;
   const finalParsedElements: (string | JSX.Element)[] = [];
 
@@ -90,9 +82,7 @@ const parseBold = (
         if (boldMatch.index > lastBoldIndex) {
           boldElements.push(element.slice(lastBoldIndex, boldMatch.index));
         }
-        boldElements.push(
-          <BoldText<any> key={boldText + index}>{boldText}</BoldText>
-        );
+        boldElements.push(<BoldText key={boldText + index}>{boldText}</BoldText>);
         lastBoldIndex = boldMatch.index + boldFullMatch.length;
       }
 
@@ -109,13 +99,8 @@ const parseBold = (
   return finalParsedElements;
 };
 
-export const MarkDown = ({
-  input,
-  href = '',
-}: UseMarkDownProps): (string | JSX.Element)[] => {
-  const [parsedContent, setParsedContent] = useState<(string | JSX.Element)[]>(
-    []
-  );
+export const MarkDown = ({ input, href = '' }: UseMarkDownProps): (string | JSX.Element)[] => {
+  const [parsedContent, setParsedContent] = useState<(string | JSX.Element)[]>([]);
 
   useEffect(() => {
     if (input) {

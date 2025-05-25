@@ -1,10 +1,6 @@
 import styled from 'styled-components';
 
-interface BackdropProps extends React.HTMLAttributes<HTMLDivElement> {
-  visible: boolean;
-}
-
-export const Backdrop = styled.div<BackdropProps>`
+export const Backdrop = styled.div<{ visible: boolean }>`
   position: fixed;
   inset: 0;
   background-color: rgba(0, 0, 0, 0.3);
@@ -19,13 +15,7 @@ export const Footer = styled.div`
   box-shadow: rgba(0, 0, 0, 0.26) 0px 0px 36px -25px;
 `;
 
-interface ContainerProps extends React.HTMLAttributes<HTMLDivElement> {
-  height: number;
-  maxHeight: number;
-  closing: boolean;
-}
-
-export const Container = styled.div<ContainerProps>`
+export const Container = styled.div<{ height: number; maxHeight: number; closing: boolean }>`
   position: fixed;
   bottom: 0;
   left: 0;
@@ -43,10 +33,9 @@ export const Container = styled.div<ContainerProps>`
   z-index: 1000;
 `;
 
-export const DragContainer = styled.div<React.HTMLAttributes<HTMLDivElement>>`
+export const DragContainer = styled.div`
   padding-block: 1rem 2rem;
 `;
-
 export const DragHandle = styled.div`
   height: 8px;
   width: 50px;

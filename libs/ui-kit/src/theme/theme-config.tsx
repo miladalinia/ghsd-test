@@ -7,7 +7,8 @@ import { IConfig, ITheme, Direction } from '@ghased-portal/types';
 import { getTheme } from './theme';
 import { Directionality } from './directionality';
 import { getAntBaseConfig } from './ant-base-config';
-import { useConfig } from '@ghased-portal/hooks';
+import { useSelector } from 'react-redux';
+import { RootState } from '@ghased-portal/redux-store';
 
 export interface ThemeConfigProps {
   onLocaleChange: (config: IConfig) => void;
@@ -15,7 +16,7 @@ export interface ThemeConfigProps {
 }
 
 const ThemeConfig = (props: ThemeConfigProps): JSX.Element => {
-  const { config } = useConfig();
+  const config = useSelector((state: RootState) => state.appConfig.config);
 
   const isRtl = config?.direction === Direction.RTL;
 

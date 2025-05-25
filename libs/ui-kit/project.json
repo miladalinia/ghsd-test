@@ -1,13 +1,9 @@
 {
-    "targets": {
-      "build": {
-        "executor": "@nx/js:tsc",
-        "options": {
-          "outputPath": "dist/libs/ui-kit",
-          "tsConfig": "libs/ui-kit/tsconfig.lib.json",
-          "main": "libs/ui-kit/src/index.ts"
-        }
-      }
-    }
-  }
-  
+  "name": "ui-kit",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/ui-kit/src",
+  "projectType": "library",
+  "tags": [],
+  "// targets": "to see all targets run: nx show project ui-kit --web",
+  "targets": {}
+}

@@ -1,3 +1,5 @@
+'use client'
+
 export { default as getAntTheme } from './theme/ant-theme';
 export { default as ThemeConfig } from './theme/theme-config';
 export * from './assets';

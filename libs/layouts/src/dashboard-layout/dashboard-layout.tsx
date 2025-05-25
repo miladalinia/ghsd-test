@@ -1,7 +1,9 @@
+'use client'
+
 import React, { ReactNode, useEffect, useState } from 'react';
 import { Layout, Spin } from 'antd';
 
-import { useAuth, useConfig, useMenu, useResponsive } from '@ghased-portal/hooks';
+import { useAuth, useMenu, useResponsive } from '@ghased-portal/hooks';
 
 import Protected from '../components/protected/protected';
 import Appbar from '../components/appbar/appbar';
@@ -9,25 +11,27 @@ import Drawer from '../components/drawer/drawer';
 import MainContent from '../components/main-content/main-content';
 
 import * as S from './dashboard-layout.style';
-import { useRouter } from 'next/router';
+import { usePathname, useRouter } from 'next/navigation';
 import { isPathAllowed } from '../utils/utils';
 import { ENV_CONSTANTS } from '@ghased-portal/utils';
 import FullScreenModal from '../components/full-screen-search/full-screen-search';
+import { useSelector } from 'react-redux';
+import { RootState } from '@ghased-portal/redux-store';
 
 type DashboardLayoutProps = {
   children: ReactNode;
 };
 
 export const DashboardLayout = ({ children }: DashboardLayoutProps) => {
-  const { config } = useConfig();
+  const config = useSelector((state: RootState) => state.appConfig.config);
   const [openDrawer, setOpenDrawer] = useState(false);
   const [openFullModal, setOpenFullModal] = useState(false);
   const [collapsed, setCollapsed] = useState(false);
   const { isMobile, isMobileOrTablet, isDesktop, isTablet, isUndefined } = useResponsive();
-  const { logout } = useAuth();
+  // const { logout } = useAuth();
   const { menu } = useMenu();
   const router = useRouter();
-  const currentPath = router.pathname;
+  const currentPath = usePathname();
 
   useEffect(() => {
     if (ENV_CONSTANTS.IS_PROD && menu && !isPathAllowed(menu, currentPath)) {
@@ -64,7 +68,7 @@ export const DashboardLayout = ({ children }: DashboardLayoutProps) => {
     // setOpenDrawer(false);
     // console.log('logout clicked');
 
-    logout();
+    // logout();
   };
 
   function handleOnBreakpoint(broken: boolean) {
@@ -79,16 +83,17 @@ export const DashboardLayout = ({ children }: DashboardLayoutProps) => {
 
   return (
     <Protected>
-      <Layout>
-        <Appbar
+      <MainContent>{children}</MainContent>
+      {/* <Layout> */}
+        {/* <Appbar
           onToggleDrawer={toggleDrawer}
-          onLogout={handleLogout}
+          // onLogout={handleLogout}
           config={config}
           isMobileOrTablet={isMobileOrTablet}
           setOpenModal={handleOpenModal}
-        />
+        /> */}
 
-        <Layout>
+        {/* <Layout>
           <Drawer
             shouldDisplaySider={!isUndefined && !isMobile}
             shouldDisplayDrawer={isMobile}
@@ -110,7 +115,7 @@ export const DashboardLayout = ({ children }: DashboardLayoutProps) => {
           </S.MainContentLayout>
         </Layout>
       </Layout>
-      <FullScreenModal open={openFullModal} setOpen={setOpenFullModal} />
+      <FullScreenModal open={openFullModal} setOpen={setOpenFullModal} /> */}
     </Protected>
   );
 };

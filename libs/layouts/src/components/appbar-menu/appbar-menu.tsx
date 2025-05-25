@@ -5,11 +5,13 @@ import { Form, MenuProps } from 'antd';
 import { Button, LocaleSwitcher, ThemeSwitch } from '@ghased-portal/ui-kit';
 import { useTr } from '@ghased-portal/translation';
 import { CONSTANTS } from '@ghased-portal/utils';
-import { useAuth, useConfig } from '@ghased-portal/hooks';
+import { useAuth } from '@ghased-portal/hooks';
 
 import * as S from './appbar-menu.style';
 import MoreServicesSvg from '../../assets/media/menu-icons/more-services';
 import { useTheme } from 'styled-components';
+import { RootState } from '@ghased-portal/redux-store';
+import { useSelector } from 'react-redux';
 
 enum MenuItemKey {
   ChangeLanguage = 'changeLanguage',
@@ -34,7 +36,7 @@ const AppBarMenu = (props: AppBarMenuProps) => {
   const localeSwitcherRef = useRef<LocaleSwitcherRef | null>(null);
 
   const { isAuth, logout } = useAuth();
-  const { config, updateConfig } = useConfig();
+  const config = useSelector((state: RootState) => state.appConfig.config);
 
   const [logoutForm] = Form.useForm();
 
@@ -120,7 +122,9 @@ const AppBarMenu = (props: AppBarMenuProps) => {
       color={color}
       dropdownRender={(menu) => {
         return (
-          <S.DropdownRender>{React.cloneElement(menu as React.ReactElement, { style: menuStyle })}</S.DropdownRender>
+          <S.DropdownRender>
+            {React.cloneElement(menu as React.ReactElement<any>, { style: menuStyle })}
+          </S.DropdownRender>
         );
       }}
     >

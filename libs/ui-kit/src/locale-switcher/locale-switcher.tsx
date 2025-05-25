@@ -3,8 +3,9 @@ import styled from 'styled-components';
 import { Button } from 'antd';
 
 import { useTr } from '@ghased-portal/translation';
-import { useConfig } from '@ghased-portal/hooks';
 import { Direction, Locale } from '@ghased-portal/types';
+import { useSelector } from 'react-redux';
+import { RootState, updateConfig } from '@ghased-portal/redux-store';
 
 export type LocaleSwitcherProps = {
   children?: React.ReactNode;
@@ -38,7 +39,8 @@ export const Wrapper = styled.div<LocaleSwitcherProps>`
 
 export const LocaleSwitcher = forwardRef((props: LocaleSwitcherProps, ref) => {
   const { children, ...rest } = props;
-  const { config, updateConfig } = useConfig();
+  const config = useSelector((state: RootState) => state.appConfig.config);
+
   const [t] = useTr();
 
   const onToggleLocale = () => {

@@ -3,7 +3,7 @@ import { Badge, Empty, Input, Menu, MenuProps, Result } from 'antd';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
-import { useAsync, useAuth, useConfig, useLocalStorage, useMenu, useResponsive } from '@ghased-portal/hooks';
+import { useAsync, useAuth, useLocalStorage, useMenu, useResponsive } from '@ghased-portal/hooks';
 import { useTr } from '@ghased-portal/translation';
 import { Direction, LocalStorageKey } from '@ghased-portal/types';
 import { Box, Button, Loading } from '@ghased-portal/ui-kit';
@@ -15,6 +15,8 @@ import UserSection from '../user-section/user-section';
 
 import * as S from './drawer.style';
 import MobileNavigationBar from '../mobile-navigation-bar/mobile-navigation-bar';
+import { useSelector } from 'react-redux';
+import { RootState } from '@ghased-portal/redux-store';
 
 type MenuItem = Required<MenuProps>['items'][number];
 
@@ -59,9 +61,9 @@ const Drawer = (props: DrawerProps) => {
 
   const { user, setUser, isAuth } = useAuth();
   const { menu, setMenu } = useMenu();
-  const { config } = useConfig();
+  const config = useSelector((state: RootState) => state.appConfig.config);
   const prevLocaleRef = useRef(config.locale);
-  const menuItemKeyRef = useRef(null);
+  const menuItemKeyRef = useRef<string | null>(null);
 
   const [t] = useTr();
   const [searchQuery, setSearchQuery] = useState('');
@@ -287,6 +289,7 @@ const Drawer = (props: DrawerProps) => {
       {shouldDisplaySider && (
         <S.Sider
           trigger={null}
+          theme={'light'}
           collapsible
           collapsed={siderCollapsed}
           breakpoint={'md'}

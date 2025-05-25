@@ -1,6 +1,7 @@
 import React from 'react';
 import * as S from './progress.style';
 import { ProgressProps as AntProgressProps } from 'antd';
+import { ProgressBarWrapper, ProgressStyled } from './progress.style';
 import { useAppTheme } from '@ghased-portal/hooks';
 
 type ProgressProps = AntProgressProps & {
@@ -28,8 +29,8 @@ export const Progress = (props: ProgressProps) => {
   );
 
   return (
-    <S.ProgressBarWrapper spaceTop={spaceTop}>
-      <S.ProgressStyled
+    <ProgressBarWrapper spaceTop={spaceTop}>
+      <ProgressStyled
         format={format || customFormat}
         percent={percent}
         strokeColor={strokeColor}
@@ -37,6 +38,6 @@ export const Progress = (props: ProgressProps) => {
         trailColor={trailColor}
         {...rest}
       />
-    </S.ProgressBarWrapper>
+    </ProgressBarWrapper>
   );
 };

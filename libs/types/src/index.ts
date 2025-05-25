@@ -1,3 +1,5 @@
+'use client'
+
 export * from './enums';
 export * from './common';
 export * from './props';

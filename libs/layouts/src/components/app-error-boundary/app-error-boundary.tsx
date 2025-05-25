@@ -11,7 +11,7 @@ const AppErrorBoundary: React.FC<{ children: ReactNode }> = ({ children }) => {
   };
 
   return (
-    <ErrorBoundary FallbackComponent={ErrorFallback} onError={errorHandler}>
+    <ErrorBoundary FallbackComponent={ErrorFallback} /*onError={errorHandler}*/>
       {children}
     </ErrorBoundary>
   );

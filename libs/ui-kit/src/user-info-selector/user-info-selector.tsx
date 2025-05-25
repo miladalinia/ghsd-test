@@ -3,9 +3,9 @@ import { AutoComplete, Input } from 'antd';
 import * as S from './user-info-selector.style';
 import Api from './user-info-selector.api';
 import { Loading } from '../loading/loading';
+import { useAsync } from '@ghased-portal/hooks';
 import { useTr } from '@ghased-portal/translation';
 import { Options, Props } from './user-info-selector-types';
-import { useAsync } from '@ghased-portal/hooks';
 
 export const UserInfoSelector = (props: Props) => {
   const [t] = useTr();

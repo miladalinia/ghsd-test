@@ -16,7 +16,7 @@ export interface ITheme {
   primary: string;
   primaryDark: string;
   primaryLight: string;
-  // secondary: string;
+  secondary: string;
   background: string;
   surface: string;
   onPrimary: string;

@@ -1,5 +1,6 @@
+'use client';
+
 import { ReactNode, useEffect } from 'react';
-import { useRouter } from 'next/router';
 
 import { useAuth } from '@ghased-portal/hooks';
 import { MAIN_HREF } from '@ghased-portal/utils';
@@ -11,16 +12,15 @@ export type ProtectedProps = {
 };
 
 const Protected = ({ children }: ProtectedProps) => {
-  const router = useRouter();
-  const { isAuth } = useAuth();
+  // const { isAuth } = useAuth();
 
-  useEffect(() => {
-    if (!isAuth) {
-      router.replace(MAIN_HREF.AUTH);
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (!isAuth) {
+  //     window.history.replaceState(null, '', MAIN_HREF.AUTH);
+  //   }
+  // }, []);
 
-  return <ClientOnly>{isAuth && children}</ClientOnly>;
+  return <ClientOnly>{/*isAuth && */ children}</ClientOnly>;
 };
 
 export default Protected;

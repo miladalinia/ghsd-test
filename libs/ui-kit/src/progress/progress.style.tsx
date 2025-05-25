@@ -4,9 +4,7 @@ import { Progress as AntProgress } from 'antd';
 export const ProgressStyled = styled(AntProgress)`
   //
 `;
-export const ProgressBarWrapper =  styled.div<
-  React.PropsWithChildren<{ spaceTop: string }>
->`
+export const ProgressBarWrapper = styled.div<{ spaceTop: string }>`
   position: relative;
   top: ${(p) => p.spaceTop};
   width: 100%;

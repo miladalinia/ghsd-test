@@ -5,7 +5,7 @@ export function changeDayjsCalendar(locale?: string) {
   if (locale === Locale.FA_IR) {
     dayjs['calendar']('jalali');
   } else {
-    dayjs['calendar'](undefined);
+    dayjs['calendar']('gregory');
   }
 }
 

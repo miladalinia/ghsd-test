@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { DatePicker as AntDatePicker, DatePickerProps as AntDatePickerProps } from 'antd';
+import {
+  DatePicker as AntDatePicker,
+  DatePickerProps as AntDatePickerProps,
+} from 'antd';
 import { dayjs } from '@ghased-portal/utils';
 import { RangePickerProps } from 'antd/lib/date-picker';
 
@@ -30,7 +33,9 @@ const handleKeyDown = (
 
     const form = (event.target as HTMLElement).closest('form');
     if (form) {
-      const submitButton = form.querySelector('button[type="submit"]') as HTMLButtonElement;
+      const submitButton = form.querySelector(
+        'button[type="submit"]'
+      ) as HTMLButtonElement;
       if (submitButton) {
         submitButton.click();
       }
@@ -57,7 +62,8 @@ export const DatePicker = (props: DatePickerProps) => {
     value,
     ...rest
   } = props;
-  const defVal = defaultValue ?? (defaultValueStr ? dayjs(defaultValueStr) : null);
+  const defVal =
+    defaultValue ?? (defaultValueStr ? dayjs(defaultValueStr) : null);
 
   const handleDisableDate = (current) => {
     if (disabledPast) {
@@ -67,7 +73,7 @@ export const DatePicker = (props: DatePickerProps) => {
       return current && current > dayjs().endOf('day');
     }
     if (disabledDate) {
-      return disabledDate(current);
+      return disabledDate(current, { type: 'date' });
     }
     return false;
   };
@@ -86,7 +92,9 @@ export const DatePicker = (props: DatePickerProps) => {
       open={open}
       onOpenChange={handleOpenChange}
       onClick={() => setIsClicked(true)}
-      onKeyDown={(e) => handleKeyDown(e, setOpen, setEnterKey, setIsClicked, !!value)}
+      onKeyDown={(e) =>
+        handleKeyDown(e, setOpen, setEnterKey, setIsClicked, !!value)
+      }
       value={value}
       {...rest}
     />

@@ -1,7 +1,7 @@
 import React, { ComponentRef, useCallback, useEffect, useRef, useState } from 'react';
 import { AutoComplete, AutoCompleteProps, Input } from 'antd';
 
-import { useAsync, useConfig, useLocalStorage } from '@ghased-portal/hooks';
+import { useAsync, useLocalStorage } from '@ghased-portal/hooks';
 import { useTr } from '@ghased-portal/translation';
 import { LocalStorageKey } from '@ghased-portal/types';
 import { addThousandSeparator, handleKeyPress } from '@ghased-portal/utils';
@@ -12,6 +12,8 @@ import { Loading } from '../loading/loading';
 import { filterAccounts, mapAccount } from './account-selector-utils';
 import Api from './account-selector-api';
 import * as S from './account-selector.style';
+import { useSelector } from 'react-redux';
+import { RootState } from '@ghased-portal/redux-store';
 
 export type AccountSelectorProps = Omit<AutoCompleteProps, 'onSelect'> & {
   serviceName: 'INVOICE' | 'CHEQUE' | 'MONEY_TRANSFER' | 'BATCH_PAYMENT' | 'BILL' | 'CARD' | 'NONE';
@@ -35,7 +37,7 @@ export const AccountSelector = (props: AccountSelectorProps) => {
     onChange: baseOnChange,
     ...rest
   } = props;
-  const { config } = useConfig();
+  const config = useSelector((state: RootState) => state.appConfig.config);
   const CACHE_TTL = 20 * 60 * 1000; // 20 min
   const API_SEARCH_LENGTH_LIMIT = 4;
   const API_STOP_TYPING_SEARCH_DELAY = 500; // 500 ms

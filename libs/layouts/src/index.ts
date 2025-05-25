@@ -1,3 +1,5 @@
+'use client';
+
 export { default as AuthLayout } from './auth-layout/auth-layout';
 export { default as DashboardLayout } from './dashboard-layout/dashboard-layout';
 export { default as LandingLayout } from './landing-layout/landing-layout';

@@ -1,14 +1,9 @@
 {
-    "targets": {
-      "build": {
-        "executor": "@nx/js:tsc",
-        "options": {
-          "outputPath": "dist/libs/translation",
-          "tsConfig": "libs/translation/tsconfig.lib.json",
-          "main": "libs/translation/src/index.ts"
-
-        }
-      }
-    }
-  }
-  
+  "name": "translation",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/translation/src",
+  "projectType": "library",
+  "tags": [],
+  "// targets": "to see all targets run: nx show project translation --web",
+  "targets": {}
+}

@@ -1,0 +1,1 @@
+{"version":3,"file":"mobile-column.d.ts","sourceRoot":"","sources":["mobile-column.tsx"],"names":[],"mappings":"AAAA,OAAO,KAAK,MAAM,OAAO,CAAC;AAI1B,MAAM,MAAM,iBAAiB,GAAG;IAC9B,KAAK,CAAC,EAAE,KAAK,CAAC,SAAS,CAAC;IACxB,KAAK,CAAC,EAAE,KAAK,CAAC,SAAS,CAAC;CACzB,CAAC;AAEF,eAAO,MAAM,YAAY,GAAI,OAAO,iBAAiB,4CASpD,CAAC"}

@@ -11,7 +11,7 @@ import Anonymous from '../components/anonymous/anonymous';
 import { ReactComponent as PhoneSupportSVG } from '../assets/media/phone-support.svg';
 import { ReactComponent as CloseSVG } from '../assets/media/close.svg';
 
-import * as authBG from '../assets/media/auth-bg.png';
+import authBG from '../assets/media/auth-bg.png';
 import * as S from './auth-layout.style';
 
 type AuthLayoutProps = {
@@ -81,13 +81,12 @@ export const AuthLayout = ({ children, title }: AuthLayoutProps) => {
 
               {(ENV_CONSTANTS.IS_DEV || true) && <LocaleSwitcher type='onPrimary' />}
 
-              <span className={'left-panel__nav__bank-logo'}>
+              {/* <span className={'left-panel__nav__bank-logo'}>
                 <Image
-                  // src={bankLogo}
                   src={bankLogo}
                   alt='Bank Melli'
                 />
-              </span>
+              </span> */}
             </nav>
 
             <div className={'left-panel__middle'}>

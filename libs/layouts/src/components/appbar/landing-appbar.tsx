@@ -8,15 +8,15 @@ import { useTr } from '@ghased-portal/translation';
 import { bankLogoBlack, bankLogo, Button, LocaleSwitcher, ThemeSwitch, Box } from '@ghased-portal/ui-kit';
 import { Direction, IConfig, ThemeID } from '@ghased-portal/types';
 import { CONSTANTS, ENV_CONSTANTS, MAIN_HREF } from '@ghased-portal/utils';
-import { ReactComponent as AccountSellector } from '../../assets/media/account-circle-fill.svg';
-import { ReactComponent as ArrowLeft } from '../../assets/media/arrow-drop-left-line.svg';
-import { ReactComponent as PlayBtn } from '../../assets/media/play-btn.svg';
+import AccountSellector from '../../assets/media/account-circle-fill.svg';
+import ArrowLeft from '../../assets/media/arrow-drop-left-line.svg';
+import PlayBtn from '../../assets/media/play-btn.svg';
 
 import AppBarMenu from '../appbar-menu/appbar-menu';
 
 import * as S from './landing-appbar.style';
 import DrawerLanding from '../drawerLanding/drawer';
-import { useAppTheme, useConfig } from '@ghased-portal/hooks';
+import { useAppTheme } from '@ghased-portal/hooks';
 import VideoModal from './modal/video-modal';
 import { ButtonStyled } from './landing-appbar.style';
 
@@ -100,7 +100,7 @@ const LandingAppbar = (props: LandingAppBarProps) => {
   const getDesktopAppbar = () => {
     return (
       <>
-        <Image src={bankImage} alt='Bank Melli' className={'appbar-bank-logo'} />
+        {/* <Image src={bankImage} alt='Bank Melli' className={'appbar-bank-logo'} /> */}
 
         <Space size={'large'} role={'navigation'} className={'landing-nav'}>
           <Link href={CONSTANTS.CONTACT_US_LINK} target={'_blank'}>

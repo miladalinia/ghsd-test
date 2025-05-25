@@ -89,9 +89,7 @@ export const StyledContainer = styled(Alert)`
   }
 `;
 
-export const ToggleButton = styled.button<
-  React.HTMLAttributes<HTMLButtonElement>
->`
+export const ToggleButton = styled.button`
   color: ${({ theme }) => theme.primary};
   border: none;
   background: none;

@@ -4,11 +4,13 @@ import Link from 'next/link';
 import * as S from './drawer.style';
 import { CONSTANTS, MAIN_HREF } from '@ghased-portal/utils';
 import { useTr } from '@ghased-portal/translation';
-import { useAuth, useConfig } from '@ghased-portal/hooks';
+import { useAuth } from '@ghased-portal/hooks';
 import { ReactComponent as Melli } from '../../assets/media/Melli Logo.svg';
 import { ReactComponent as MelliTitle } from '../../assets/media/melli-title.svg';
 import { ButtonDrawer } from '../appbar/landing-appbar.style';
 import { Direction } from '@ghased-portal/types';
+import { useSelector } from 'react-redux';
+import { RootState } from '@ghased-portal/redux-store';
 
 type AppBarMenuProps = {
   visible: boolean;
@@ -17,7 +19,7 @@ type AppBarMenuProps = {
 
 const DrawerLanding = ({ visible, onClose }: AppBarMenuProps) => {
   const [t] = useTr();
-  const { config } = useConfig();
+  const config = useSelector((state: RootState) => state.appConfig.config);
   const { isAuth, logout } = useAuth();
   function getLoginHref() {
     return isAuth ? MAIN_HREF.HOME : MAIN_HREF.AUTH;

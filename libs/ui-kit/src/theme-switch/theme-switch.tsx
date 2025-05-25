@@ -4,7 +4,8 @@ import { Switch as AntSwitch, SwitchProps as AntSwitchProps } from 'antd';
 
 import { getRelatedColor, respondTo } from '@ghased-portal/utils';
 import { ThemeID } from '@ghased-portal/types';
-import { useConfig } from '@ghased-portal/hooks';
+import { useSelector } from 'react-redux';
+import { RootState, updateConfig } from '@ghased-portal/redux-store';
 
 export type ThemeSwitchProps = AntSwitchProps & {
   children?: React.ReactNode;
@@ -58,7 +59,7 @@ const ThemeSwitchWrapper = styled(AntSwitch)`
 
 export const ThemeSwitch = (props: ThemeSwitchProps) => {
   const { children, ...rest } = props;
-  const { config, updateConfig } = useConfig();
+  const config = useSelector((state: RootState) => state.appConfig.config);
 
   const handleOnChange = (val, event) => {
     updateConfig({

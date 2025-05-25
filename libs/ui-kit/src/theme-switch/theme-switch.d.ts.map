@@ -1,0 +1,1 @@
+{"version":3,"file":"theme-switch.d.ts","sourceRoot":"","sources":["theme-switch.tsx"],"names":[],"mappings":"AAAA,OAAO,KAAK,MAAM,OAAO,CAAC;AAE1B,OAAO,EAAuB,WAAW,IAAI,cAAc,EAAE,MAAM,MAAM,CAAC;AAO1E,MAAM,MAAM,gBAAgB,GAAG,cAAc,GAAG;IAC9C,QAAQ,CAAC,EAAE,KAAK,CAAC,SAAS,CAAC;CAC5B,CAAC;AAgDF,eAAO,MAAM,WAAW,GAAI,OAAO,gBAAgB,4CAwBlD,CAAC"}

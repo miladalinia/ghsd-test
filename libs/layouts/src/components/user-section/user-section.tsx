@@ -6,13 +6,15 @@ import { useTr } from '@ghased-portal/translation';
 import { persianToFinglish } from '@ghased-portal/utils';
 import { Locale, LocalStorageKey } from '@ghased-portal/types';
 import { Avatar, Button, Loading } from '@ghased-portal/ui-kit';
-import { useAuth, useConfig, useLocalStorage, useMenu } from '@ghased-portal/hooks';
+import { useAuth, useLocalStorage, useMenu } from '@ghased-portal/hooks';
 
 import { Api } from '../../services';
 import { defaultUserPhoto } from '../../assets/mock/data';
 import ChangeOrganizationModal from '../change-organization-modal/change-organization-modal';
 
 import * as S from './user-section.style';
+import { useSelector } from 'react-redux';
+import { RootState } from '@ghased-portal/redux-store';
 
 export type DrawerProps = {
   onToggleDrawer?: React.MouseEventHandler;
@@ -24,7 +26,7 @@ export type DrawerProps = {
 const UserSection = (props: DrawerProps) => {
   const router = useRouter();
   const [t] = useTr();
-  const { config } = useConfig();
+  const config = useSelector((state: RootState) => state.appConfig.config);
   const { removeMenu } = useMenu();
   const { user, userPhoto, setUserPhoto, isAuth } = useAuth();
   const [userOrg, setUserOrg, removeUserOrg] = useLocalStorage<any>(LocalStorageKey.USER_ORG);
